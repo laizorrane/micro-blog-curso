@@ -10,37 +10,37 @@ part 'ServicosDoMicroBlog.g.dart';
 abstract class ServicosDoMicroBlog {
   factory ServicosDoMicroBlog(Dio dio, {String baseUrl}) = _ServicosDoMicroBlog;
 
-  @POST("/usuario/cadastrarUsuario")
+  @POST("/usuarioLaiz/cadastrarUsuario")
   Future<UtilRetornoUsuario> cadastrarUsuario(@Body() Usuario usuario);
 
-  @PUT("/usuario/editarUsuarioUsuario")
+  @PUT("/usuarioLaiz/editarUsuarioUsuario")
   Future<UtilRetornoUsuario> editarUsuario(@Body() Usuario usuario);
 
-  @GET("/usuario/logarUsuario")
+  @GET("/usuarioLaiz/logarUsuario")
   Future<UtilRetornoUsuario> logarUsuario(
       @Query("email") String email, @Query("senha") String senha);
 
-  @GET("/feed/consultarPublicacoes")
+  @GET("/feedLaiz/consultarPublicacoes")
   Future<UtilRetornoPublicacoes> consultarPublicacoes();
 
-  @DELETE("/feed/removerLike")
+  @DELETE("/feedLaiz/removerLike")
   Future<UtilRetornoPostagem> removerLike(
       @Query("id") String idPostagem, @Query("idUsuario") String idUsuario);
 
-  @POST("/feed/darLike")
+  @POST("/feedLaiz/darLike")
   Future<UtilRetornoPostagem> darLike(
       @Body() Usuario usuario, @Query("id") String idPostagem);
 
-  @DELETE("/feed/excluirComentario")
+  @DELETE("/feedLaiz/excluirComentario")
   Future<UtilRetornoPostagem> removerComentario(@Query("id") String idPostagem,
       @Query("idComentario") String idComentario);
 
-  @POST("/feed/comentarPost")
+  @POST("/feedLaiz/comentarPost")
   Future<UtilRetornoPostagem> comentarPublicacao(@Body() Comentario comentario, @Query("id") String idPostagem);
 
-  @DELETE("/feed/excluirPostagem")
+  @DELETE("/feedLaiz/excluirPostagem")
   Future<String> excluirPostagem(@Query("id") String idPostagem);
 
-  @POST("/feed/manterPublicacao")
+  @POST("/feedLaiz/manterPostagem")
   Future<UtilRetornoPostagem> manterPublicacao(@Body() Postagem postagem);
 }

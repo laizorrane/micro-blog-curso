@@ -17,7 +17,7 @@ abstract class _ControladorUsuarioBase with Store {
   void verificarSeTemUsuario(
       {Function() temUsuario, Function() naoTemUsuario}) {
     _prefs.then((db) {
-      //db.setString("user", null); // Comando utilizado para deletar usuário local - usado sempre ao fazer teste
+      // db.remove("user") - remover usuario;
       var usuarioJson = db.getString("user");
       if (usuarioJson != null) {
         mUsuarioLogado = Usuario.fromJson(JsonCodec().decode(usuarioJson));
@@ -39,7 +39,8 @@ abstract class _ControladorUsuarioBase with Store {
     } else {
       mService.cadastrarUsuario(usuarioCadastrar).then((usuario) {
         _prefs.then((db) {
-          db.setString("user", JsonCodec().encode(usuario.toJson()));
+          db.setString("user", JsonCodec().encode(usuario.sucesso.toJson()));
+          mUsuarioLogado = usuario.sucesso;
           sucesso?.call();
         });
       }).catchError((onError) {
@@ -49,7 +50,7 @@ abstract class _ControladorUsuarioBase with Store {
   }
 
   void logarUsuario(Usuario usuarioLogar,
-      {Function sucesso, Function(String mensagem) erro}) {
+      {Function() sucesso, Function(String mensagem) erro}) {
     if ((usuarioLogar.email?.isEmpty ?? true) ||
         (usuarioLogar.senha?.isEmpty ?? true)) {
       erro?.call("Usuário ou senha invalidos");
@@ -58,12 +59,20 @@ abstract class _ControladorUsuarioBase with Store {
           .logarUsuario(usuarioLogar.email, usuarioLogar.senha)
           .then((usuario) {
         _prefs.then((db) {
-          db.setString("user", JsonCodec().encode(usuario.toJson()));
+          db.setString("user", JsonCodec().encode(usuario.sucesso.toJson()));
+          mUsuarioLogado = usuario.sucesso;
           sucesso?.call();
         });
       }).catchError((onError) {
         erro?.call(onError.response?.data["falha"]);
       });
     }
+  }
+
+  void deslogarUsuario({Function() sucesso}) {
+    _prefs.then((value) {
+      value.remove('user');
+      sucesso.call();
+    });
   }
 }

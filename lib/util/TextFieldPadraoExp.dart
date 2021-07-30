@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class TextFieldPadrao extends StatelessWidget {
+class TextFieldPadraoExp extends StatelessWidget {
   final Function(String text) onChanged;
   final String titulo, value;
   final bool obscureText;
-  const TextFieldPadrao(
+  const TextFieldPadraoExp(
       {Key key,
       this.onChanged,
       this.titulo,
@@ -25,8 +25,11 @@ class TextFieldPadrao extends StatelessWidget {
               child: Text("$titulo"),
             )),
         Container(
-          height: 45,
-          child: TextField(
+                    
+            child: TextField(
+            maxLength: 200,
+            minLines: 1,
+            maxLines: 4,
             onChanged: onChanged,
             obscureText: obscureText,
             controller: TextEditingController(text: value ?? ""),
@@ -44,4 +47,7 @@ class TextFieldPadrao extends StatelessWidget {
       ],
     );
   }
+
+
+  
 }

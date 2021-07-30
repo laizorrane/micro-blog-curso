@@ -33,7 +33,8 @@ class MyApp extends StatelessWidget {
         "/splash": (_) => TelaSplash(),
         "/telaLogin": (_) => TelaLogin(),
         "/telaPrincipal": (_) => TelaPrincipal(),
-        "/telaDeCadastro": (_) => TelaDeCadastro()
+        "/telaDeCadastro": (_) => TelaDeCadastro(),
+       
       },
     );
   }

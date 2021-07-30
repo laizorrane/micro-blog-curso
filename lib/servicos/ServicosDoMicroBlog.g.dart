@@ -24,7 +24,7 @@ class _ServicosDoMicroBlog implements ServicosDoMicroBlog {
     final _data = <String, dynamic>{};
     _data.addAll(usuario?.toJson() ?? <String, dynamic>{});
     final _result = await _dio.request<Map<String, dynamic>>(
-        '/usuario/cadastrarUsuario',
+        '/usuarioLaiz/cadastrarUsuario',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'POST',
@@ -44,7 +44,7 @@ class _ServicosDoMicroBlog implements ServicosDoMicroBlog {
     final _data = <String, dynamic>{};
     _data.addAll(usuario?.toJson() ?? <String, dynamic>{});
     final _result = await _dio.request<Map<String, dynamic>>(
-        '/usuario/editarUsuarioUsuario',
+        '/usuarioLaiz/editarUsuarioUsuario',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'PUT',
@@ -64,7 +64,7 @@ class _ServicosDoMicroBlog implements ServicosDoMicroBlog {
     final queryParameters = <String, dynamic>{r'email': email, r'senha': senha};
     final _data = <String, dynamic>{};
     final _result = await _dio.request<Map<String, dynamic>>(
-        '/usuario/logarUsuario',
+        '/usuarioLaiz/logarUsuario',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'GET',
@@ -82,7 +82,7 @@ class _ServicosDoMicroBlog implements ServicosDoMicroBlog {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.request<Map<String, dynamic>>(
-        '/feed/consultarPublicacoes',
+        '/feedLaiz/consultarPublicacoes',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'GET',
@@ -105,7 +105,7 @@ class _ServicosDoMicroBlog implements ServicosDoMicroBlog {
     };
     final _data = <String, dynamic>{};
     final _result = await _dio.request<Map<String, dynamic>>(
-        '/feed/removerLike',
+        '/feedLaiz/removerLike',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'DELETE',
@@ -125,7 +125,8 @@ class _ServicosDoMicroBlog implements ServicosDoMicroBlog {
     final queryParameters = <String, dynamic>{r'id': idPostagem};
     final _data = <String, dynamic>{};
     _data.addAll(usuario?.toJson() ?? <String, dynamic>{});
-    final _result = await _dio.request<Map<String, dynamic>>('/feed/darLike',
+    final _result = await _dio.request<Map<String, dynamic>>(
+        '/feedLaiz/darLike',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'POST',
@@ -149,7 +150,7 @@ class _ServicosDoMicroBlog implements ServicosDoMicroBlog {
     };
     final _data = <String, dynamic>{};
     final _result = await _dio.request<Map<String, dynamic>>(
-        '/feed/excluirComentario',
+        '/feedLaiz/excluirComentario',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'DELETE',
@@ -170,7 +171,7 @@ class _ServicosDoMicroBlog implements ServicosDoMicroBlog {
     final _data = <String, dynamic>{};
     _data.addAll(comentario?.toJson() ?? <String, dynamic>{});
     final _result = await _dio.request<Map<String, dynamic>>(
-        '/feed/comentarPost',
+        '/feedLaiz/comentarPost',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'POST',
@@ -188,7 +189,7 @@ class _ServicosDoMicroBlog implements ServicosDoMicroBlog {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'id': idPostagem};
     final _data = <String, dynamic>{};
-    final _result = await _dio.request<String>('/feed/excluirPostagem',
+    final _result = await _dio.request<String>('/feedLaiz/excluirPostagem',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'DELETE',
@@ -208,7 +209,7 @@ class _ServicosDoMicroBlog implements ServicosDoMicroBlog {
     final _data = <String, dynamic>{};
     _data.addAll(postagem?.toJson() ?? <String, dynamic>{});
     final _result = await _dio.request<Map<String, dynamic>>(
-        '/feed/manterPublicacao',
+        '/feedLaiz/manterPostagem',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'POST',

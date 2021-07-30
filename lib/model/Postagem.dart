@@ -1,4 +1,6 @@
+import 'package:get_it/get_it.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:microblog/Controladores/ControladorUsuario.dart';
 import 'package:microblog/model/Usuario.dart';
 import 'package:microblog/util/UtilDataHora.dart';
 part 'Postagem.g.dart';
@@ -11,6 +13,9 @@ class Postagem {
   DateTime dataDePostagem;
   Usuario criador;
   List<Usuario> likes;
+
+  bool get isCriador =>
+      GetIt.I.get<ControladorUsuario>().mUsuarioLogado.id.contains(criador.id);
 
   Postagem({this.conteudo, this.criador, this.dataDePostagem, this.id});
   factory Postagem.fromJson(Map<String, dynamic> json) =>
