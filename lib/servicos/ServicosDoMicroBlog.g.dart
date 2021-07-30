@@ -44,7 +44,7 @@ class _ServicosDoMicroBlog implements ServicosDoMicroBlog {
     final _data = <String, dynamic>{};
     _data.addAll(usuario?.toJson() ?? <String, dynamic>{});
     final _result = await _dio.request<Map<String, dynamic>>(
-        '/usuarioLaiz/editarUsuarioUsuario',
+        '/usuarioLaiz/editarUsuario',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'PUT',

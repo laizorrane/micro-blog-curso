@@ -69,6 +69,26 @@ abstract class _ControladorUsuarioBase with Store {
     }
   }
 
+  void editarUsuario(Usuario editandoUsuario,
+      {Function() sucesso, Function(String mensagem) erro}) {
+  if (editandoUsuario.senha?.isEmpty ?? true) {
+      erro?.call("Defina a nova senha");
+    } else if (editandoUsuario.nome?.isEmpty ?? true) {
+      erro?.call("Defina novo nome");
+    
+    } else {
+      mService.editarUsuario(editandoUsuario).then((usuario) {
+        _prefs.then((db) {
+          db.setString("user", JsonCodec().encode(usuario.sucesso.toJson()));
+          mUsuarioLogado = usuario.sucesso;
+          sucesso?.call();
+        });
+      }).catchError((onError) {
+        erro?.call(onError.response.data["falha"]);
+      });
+    }
+  }
+
   void deslogarUsuario({Function() sucesso}) {
     _prefs.then((value) {
       value.remove('user');

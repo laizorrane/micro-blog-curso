@@ -75,17 +75,24 @@ class _TelaPrincipalState extends State<TelaPrincipal>
                   },
                 ),
                 MenuItem(
-                  icon: Icons.settings,
-                  title: "Alterar Senha",
-                ),
+                    icon: Icons.settings,
+                    title: "Editar usuário",
+                    value: "Home",
+                    clique: () {
+                      
+                        Navigator.pushReplacementNamed(context, "/telaEditarUsuario");
+                      
+                    }),
                 MenuItem(
                   icon: Icons.exit_to_app,
                   title: "Sair",
                   value: "Sair",
                   clique: () {
-                    _controladorUsuario.deslogarUsuario(sucesso: () {
-                      Navigator.pushReplacementNamed(context, "/telaLogin");
-                    },);
+                    _controladorUsuario.deslogarUsuario(
+                      sucesso: () {
+                        Navigator.pushReplacementNamed(context, "/telaLogin");
+                      },
+                    );
                   },
                 )
               ]),
@@ -156,7 +163,12 @@ class _TelaPrincipalState extends State<TelaPrincipal>
                                   children: [
                                     InkWell(
                                         child: Icon(Icons.thumb_up_outlined,
-                                            color: _controladorFeed.temCurtida(_controladorUsuario.mUsuarioLogado, post) ? Colors.blue:Colors.black),
+                                            color: _controladorFeed.temCurtida(
+                                                    _controladorUsuario
+                                                        .mUsuarioLogado,
+                                                    post)
+                                                ? Colors.blue
+                                                : Colors.black),
                                         onTap: () {
                                           _controladorFeed.likeOrDeslike(
                                             _controladorUsuario.mUsuarioLogado,

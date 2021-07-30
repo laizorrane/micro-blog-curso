@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:microblog/Controladores/ControladorFeed.dart';
 import 'package:microblog/screens/TelaCadastro.dart';
+import 'package:microblog/screens/TelaEditarUsuario.dart';
 import 'package:microblog/screens/TelaLogin.dart';
 import 'package:microblog/screens/TelaPrincipal.dart';
 import 'package:microblog/screens/TelaSplash.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         "/telaLogin": (_) => TelaLogin(),
         "/telaPrincipal": (_) => TelaPrincipal(),
         "/telaDeCadastro": (_) => TelaDeCadastro(),
+        "/telaEditarUsuario": (_) => TelaEditarUsuario(),
        
       },
     );

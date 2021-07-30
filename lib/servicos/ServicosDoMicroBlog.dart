@@ -13,7 +13,7 @@ abstract class ServicosDoMicroBlog {
   @POST("/usuarioLaiz/cadastrarUsuario")
   Future<UtilRetornoUsuario> cadastrarUsuario(@Body() Usuario usuario);
 
-  @PUT("/usuarioLaiz/editarUsuarioUsuario")
+  @PUT("/usuarioLaiz/editarUsuario")
   Future<UtilRetornoUsuario> editarUsuario(@Body() Usuario usuario);
 
   @GET("/usuarioLaiz/logarUsuario")
