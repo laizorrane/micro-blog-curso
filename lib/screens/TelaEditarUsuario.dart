@@ -53,22 +53,20 @@ class _TelaEditarUsuarioState extends State<TelaEditarUsuario> {
                       value: "Salvar alterações",
                       onTap: () {
                         _controladorUsuario.editarUsuario(
-                          _controladorUsuario.mUsuarioLogado,
-                          sucesso: () {
-                            UtilDialog.exibirInformacao(context,
-                                titulo: "Dados alterados com sucesso!");
-                            Navigator.pushReplacementNamed(
-                                context, "/telaPrincipal");
-                          },
-                          erro: (mensagem) {
-                            UtilDialog.exibirInformacao(context,
-                                titulo:
-                                    "Ops! Não foi possível  salvas  novos dados",
-                                mensagem: mensagem);
-                          },
-                        );
+                            _controladorUsuario.mUsuarioLogado, sucesso: () {
+                          UtilDialog.exibirInformacao(context,
+                              titulo: "Dados alterados com sucesso!");
+                          Navigator.pushReplacementNamed(
+                              context, "/telaPrincipal");
+                        });
                       },
                     ),
+                    BotaoPadrao(
+                        value: "Cancelar",
+                        onTap: () {
+                          Navigator.pushReplacementNamed(
+                              context, "/telaPrincipal");
+                        })
                   ],
                 ),
               ),

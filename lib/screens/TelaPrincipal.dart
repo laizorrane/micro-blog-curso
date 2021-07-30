@@ -79,9 +79,8 @@ class _TelaPrincipalState extends State<TelaPrincipal>
                     title: "Editar usuário",
                     value: "Home",
                     clique: () {
-                      
-                        Navigator.pushReplacementNamed(context, "/telaEditarUsuario");
-                      
+                      Navigator.pushReplacementNamed(
+                          context, "/telaEditarUsuario");
                     }),
                 MenuItem(
                   icon: Icons.exit_to_app,
